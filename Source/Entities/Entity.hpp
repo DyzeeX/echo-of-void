@@ -1,7 +1,6 @@
 #include <iostream>
 
-class Entity
-{
+class Entity {
 public:
 	Entity();
 	~Entity();
