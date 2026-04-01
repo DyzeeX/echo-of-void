@@ -1,21 +1,31 @@
-﻿# CMakeList.txt: проект CMake для echo-of-void; включите исходный код и определения,
-# укажите здесь логику для конкретного проекта.
-#
-cmake_minimum_required (VERSION 3.10)
+﻿cmake_minimum_required(VERSION 3.28)
 
-# Включение горячей перезагрузки для компиляторов MSVC, если поддерживается.
-if (POLICY CMP0141)
-  cmake_policy(SET CMP0141 NEW)
-  set(CMAKE_MSVC_DEBUG_INFORMATION_FORMAT "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>")
-endif()
+project(echo-of-void LANGUAGES CXX)
 
-project ("echo-of-void")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
-# Добавьте источник в исполняемый файл этого проекта.
-add_executable (echo-of-void "main.cpp" )
+include(FetchContent)
+FetchContent_Declare(SFML
+    GIT_REPOSITORY https://github.com/SFML/SFML.git
+    GIT_TAG 3.0.2
+    GIT_SHALLOW ON
+    EXCLUDE_FROM_ALL
+    SYSTEM)
+FetchContent_MakeAvailable(SFML)
 
-if (CMAKE_VERSION VERSION_GREATER 3.12)
-  set_property(TARGET echo-of-void PROPERTY CXX_STANDARD 20)
-endif()
+add_executable (echo-of-void 
+	"main.cpp"
+	"Source/Entities/Entity.cpp"
+	"Source/Entities/Entity.hpp"
+	"Source/Entities/Player/Player.cpp"
+	"Source/Entities/Player/Player.hpp"
+	"Source/Particles/Particle.hpp"
+	"Source/Particles/Particle.cpp"
+)
 
-# TODO: Добавьте тесты и целевые объекты, если это необходимо.
+target_compile_features(echo-of-void PRIVATE cxx_std_20)
+target_link_libraries(echo-of-void PRIVATE 
+	SFML::Graphics
+)
+
+
