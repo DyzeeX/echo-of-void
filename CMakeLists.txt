@@ -13,19 +13,26 @@ FetchContent_Declare(SFML
     SYSTEM)
 FetchContent_MakeAvailable(SFML)
 
-add_executable (echo-of-void 
+add_executable (echo-of-void WIN32
 	"main.cpp"
+	"Source/Core/Application.cpp"
+	"Source/Core/Application.hpp"
 	"Source/Entities/Entity.cpp"
 	"Source/Entities/Entity.hpp"
 	"Source/Entities/Player/Player.cpp"
 	"Source/Entities/Player/Player.hpp"
 	"Source/Particles/Particle.hpp"
 	"Source/Particles/Particle.cpp"
-)
+ "Source/Core/ResourceManager.cpp" "Source/States/StateManager.cpp")
 
 target_compile_features(echo-of-void PRIVATE cxx_std_20)
 target_link_libraries(echo-of-void PRIVATE 
 	SFML::Graphics
 )
 
-
+if(WIN32)
+    target_link_options(echo-of-void PRIVATE 
+        $<$<CXX_COMPILER_ID:MSVC>:/SUBSYSTEM:WINDOWS /ENTRY:mainCRTStartup>
+        $<$<NOT:$<CXX_COMPILER_ID:MSVC>>:-mwindows>
+    )
+endif()
