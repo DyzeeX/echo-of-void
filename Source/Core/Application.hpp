@@ -14,19 +14,19 @@ public:
 	void Run();
 	~Application();
 
-	sf::RenderWindow& getWindow();
-	ResourceManager& getResources();
-	InputManager& getInput();
-	StateManager& getStates();
+	sf::RenderWindow& GetWindow();
+	ResourceManager& GetResources();
+	InputManager& GetInput();
+	StateManager& GetStates();
 
 private:
 	void ProcessEvents();
 	void Update(float deltaTime);	
 	void Render();
 
-	sf::RenderWindow   app_window;
-	sf::Clock		   app_clock;
-	StateManager       app_states;
-	ResourceManager    app_resources;
-	InputManager       app_input;
+	sf::Clock  	     app_clock;
+	WindowManager    app_window;
+	StateManager     app_states;
+	ResourceManager  app_resources;
+	InputManager     app_input;
 };
