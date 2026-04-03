@@ -1,9 +1,31 @@
 #pragma once
 
 namespace Config {
-    constexpr unsigned  WINDOW_W = 1280;
-    constexpr unsigned  WINDOW_H = 720;
-    constexpr float     FIXED_DT = 1.f / 60.f;
-    constexpr float     AMBIENT_LIGHT = 0.05f;
-    constexpr unsigned  TILE_SIZE = 16;
+    
+    // window
+    constexpr unsigned    WINDOW_W     = 1280;
+    constexpr unsigned    WINDOW_H     = 720;
+    constexpr unsigned    FRAMERATE    = 120;
+    constexpr bool        VSYNC        = false;
+    constexpr const char* WINDOW_TITLE = "Echo of Void";
+
+    // world
+    constexpr int   TILE_SIZE          = 32;
+    constexpr int   CHUNK_SIZE         = 16;     
+    constexpr float FIXED_DT           = 1.f / 60.f;
+
+    // light
+    constexpr float AMBIENT_LIGHT     = 0.04f;
+    constexpr int   MAX_LIGHTS        = 64;
+
+    // game
+    constexpr float PLAYER_MAX_HP     = 100.f;
+    constexpr float PLAYER_MAX_O2     = 100.f;
+    constexpr float PLAYER_SPEED      = 90.f;
+    constexpr float ENTITY_MAX_HP     = 200.f;
+    constexpr float O2_DRAIN_RATE     = 1.25f;
+
+    // resources path
+    constexpr const char* ASSETS_PATH   = "assets/";
+    constexpr const char* SHASDERS_PATH = "shaders/";
 }
