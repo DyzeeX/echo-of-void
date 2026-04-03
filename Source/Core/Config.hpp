@@ -3,12 +3,12 @@
 namespace Config {
     
     // window
-    constexpr unsigned    WINDOW_W     = 1280;
-    constexpr unsigned    WINDOW_H     = 720;
-    constexpr unsigned    FRAMERATE    = 120;
+    constexpr unsigned    WINDOW_W     = 1280u;
+    constexpr unsigned    WINDOW_H     = 720u;
+    constexpr unsigned    FRAMERATE    = 120u;
     constexpr bool        VSYNC        = false;
     constexpr const char* WINDOW_TITLE = "Echo of Void";
-
+    
     // world
     constexpr int   TILE_SIZE          = 32;
     constexpr int   CHUNK_SIZE         = 16;     

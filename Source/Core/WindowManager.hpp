@@ -6,11 +6,8 @@
 
 class WindowManager {
 public:
-	WindowManager() = default;
-	~WindowManager() = default;
-
-    void Init(unsigned width, unsigned height, const std::string& title);
-    void ToggleFullscreen();
+    void Init(unsigned width, unsigned height, const std::string& title);   
+    //void ToggleFullscreen();
     void SetResolution(unsigned width, unsigned height);
 
     sf::RenderWindow& Get();
@@ -21,7 +18,7 @@ public:
     sf::Vector2f ScreenToWorld(sf::Vector2i screenPos, const sf::View& view) const;
 
 private:
-    sf::RenderWindow wm_window;
-    bool             wm_fullscreen = false;
+    sf::RenderWindow m_window;
+    //bool             wm_fullscreen = false;
 
 };

@@ -44,6 +44,7 @@ add_executable (echo-of-void WIN32
 target_compile_features(echo-of-void PRIVATE cxx_std_20)
 target_link_libraries(echo-of-void PRIVATE 
 	SFML::Graphics
+	SFML::Audio
 )
 
 if(WIN32)

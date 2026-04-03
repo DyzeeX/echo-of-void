@@ -24,9 +24,9 @@ private:
 	void Update(float deltaTime);	
 	void Render();
 
-	sf::Clock  	     app_clock;
-	WindowManager    app_window;
-	StateManager     app_states;
-	ResourceManager  app_resources;
-	InputManager     app_input;
+	sf::Clock  	     m_clock;
+	WindowManager    m_window;
+	StateManager     m_states;
+	ResourceManager  m_resources;
+	InputManager     m_input;
 };
