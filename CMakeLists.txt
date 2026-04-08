@@ -33,11 +33,26 @@ target_compile_features(echo-of-void PRIVATE cxx_std_20)
 target_link_libraries(echo-of-void PRIVATE 
 	SFML::Graphics
 	SFML::Audio
+	SFML::System
+    SFML::Window
 )
 
-if(WIN32)
-    target_link_options(echo-of-void PRIVATE 
-        $<$<CXX_COMPILER_ID:MSVC>:/SUBSYSTEM:WINDOWS /ENTRY:mainCRTStartup>
-        $<$<NOT:$<CXX_COMPILER_ID:MSVC>>:-mwindows>
+if(MSVC)
+    set_target_properties(echo-of-void PROPERTIES 
+
+        LINK_FLAGS_DEBUG          "/SUBSYSTEM:CONSOLE"
+        LINK_FLAGS_RELWITHDEBINFO "/SUBSYSTEM:CONSOLE"
+        LINK_FLAGS_RELEASE        "/SUBSYSTEM:WINDOWS"
+        LINK_FLAGS_MINSIZEREL     "/SUBSYSTEM:WINDOWS"
+        
+        VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/$<CONFIG>"
     )
 endif()
+
+set(ASSETS_SOURCE_DIR "${CMAKE_SOURCE_DIR}/Assets")
+#set(SHADERS_SOURCE_DIR "${CMAKE_SOURCE_DIR}/Shaders")
+
+add_custom_command(TARGET echo-of-void POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+    ${ASSETS_SOURCE_DIR}
+    $<TARGET_FILE_DIR:echo-of-void>)

@@ -1,6 +1,6 @@
 ﻿#include <iostream>
 
-#include "Source/Core/Application.hpp"
+#include "Core/Application.hpp"
 
 #include <SFML/Graphics.hpp>
 #include <SFML/GpuPreference.hpp>

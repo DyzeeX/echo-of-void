@@ -2,11 +2,13 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "../Core/Config.hpp"
+#include "Core/Config.hpp"
 
 class WindowManager {
 public:
-    void Init(unsigned width, unsigned height, const std::string& title);   
+    WindowManager() = default;
+
+    void Init();
     //void ToggleFullscreen();
     void SetResolution(unsigned width, unsigned height);
 

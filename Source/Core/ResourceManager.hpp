@@ -1,10 +1,12 @@
 #pragma once
 
+#include <iostream>
+
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 
-#include "../Core/Config.hpp"
-#include "../Core/ResourceCache.hpp"
+#include "Core/Config.hpp"
+#include "Core/ResourceCache.hpp"
 
 class ResourceManager {
 public:
@@ -13,9 +15,4 @@ public:
 	ResourceCache<sf::SoundBuffer> sounds;
 	
 	void Init();
-
-private:
-	sf::Texture&	  LoadTexture (const std::string& id, const std::string& filename);
-	sf::Font&		  LoadFont    (const std::string& id, const std::string& filename);
-	sf::SoundBuffer&  LoadSound	  (const std::string& id, const std::string& filename);
 };

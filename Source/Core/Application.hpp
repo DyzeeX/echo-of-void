@@ -2,11 +2,11 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "../Core/Config.hpp"
-#include "../Core/ResourceManager.hpp"
-#include "../Core/WindowManager.hpp"
-#include "../States/StateManager.hpp"
-#include "../Input/InputManager.hpp"
+#include "Core/Config.hpp"
+#include "Core/ResourceManager.hpp"
+#include "Core/WindowManager.hpp"
+#include "States/StateManager.hpp"
+#include "Input/InputManager.hpp"
 
 class Application {
 public:

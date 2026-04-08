@@ -1,7 +1,7 @@
 #include "WindowManager.hpp"
 
-void WindowManager::Init(unsigned width, unsigned height, const std::string& title) {
-	m_window.create(sf::VideoMode({ width, height }), title);
+void WindowManager::Init() {
+	m_window.create(sf::VideoMode({ Config::WINDOW_W, Config::WINDOW_H }), Config::WINDOW_TITLE);
 	m_window.setFramerateLimit(Config::FRAMERATE);
 	m_window.setVerticalSyncEnabled(Config::VSYNC);
 }
@@ -10,6 +10,7 @@ void WindowManager::Init(unsigned width, unsigned height, const std::string& tit
 //void WindowManager::ToggleFullscreen() {
 //}
 
+// some shit btw
 void WindowManager::SetResolution(unsigned width, unsigned height) {
 	m_window.setSize({ width, height });
 }
