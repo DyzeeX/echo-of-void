@@ -1,7 +1,5 @@
 #include "ResourceManager.hpp"
 
-ResourceManager::ResourceManager() {
-}
+sf::Texture& ResourceManager::LoadTexture(const std::string& id, const std::string& filename) {	return textures.Load(id, filename); }
 
-ResourceManager::~ResourceManager() {
-}
+sf::Font& ResourceManager::LoadFont(const std::string& id, const std::string& filename)       { return fonts.Load(id, filename); }
