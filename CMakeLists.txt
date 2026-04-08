@@ -16,30 +16,18 @@ FetchContent_MakeAvailable(SFML)
 add_executable (echo-of-void WIN32
 	"main.cpp"
 	"Source/Core/Application.cpp"
-	"Source/Core/Application.hpp"
-	"Source/Core/Config.hpp"
 	"Source/Core/ResourceManager.cpp" 
-	"Source/Core/ResourceManager.hpp" 
 	"Source/Core/WindowManager.cpp"	
-	"Source/Core/WindowManager.hpp"	
 	"Source/Entities/Enemy/Enemy.cpp"
-	"Source/Entities/Enemy/Enemy.hpp"
 	"Source/Entities/Player/Player.cpp"
-	"Source/Entities/Player/Player.hpp"
 	"Source/Entities/Entity.cpp"
-	"Source/Entities/Entity.hpp"
 	"Source/Input/InputManager.cpp"
-	"Source/Input/InputManager.hpp"
-	"Source/Particles/Particle.hpp"
 	"Source/Particles/Particle.cpp"
 	"Source/States/StateManager.cpp"
-	"Source/States/StateManager.hpp"
-	"Source/UI/HUD.hpp"
-	"Source/UI/InventoryUI.hpp"
-	"Source/UI/Minimap.hpp"
-
 
 )
+
+target_include_directories(echo-of-void PRIVATE "Source")
 
 target_compile_features(echo-of-void PRIVATE cxx_std_20)
 target_link_libraries(echo-of-void PRIVATE 
