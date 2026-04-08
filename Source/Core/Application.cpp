@@ -1,8 +1,12 @@
 #include "Application.hpp"
 
 Application::Application() {
-	m_window.Init(Config::WINDOW_H, Config::WINDOW_W, Config::WINDOW_TITLE);
+	// init WindowManager
+	m_window.Init();
+	
 	// init ResourceManager
+	m_resources.Init();
+
 	// inti StateManager
 	// init InputManager
 }
