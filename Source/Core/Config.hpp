@@ -1,5 +1,7 @@
 #pragma once
 
+#include <string_view>
+
 namespace Config {
     
     // window
@@ -25,7 +27,4 @@ namespace Config {
     constexpr float ENTITY_MAX_HP     = 200.f;
     constexpr float O2_DRAIN_RATE     = 1.25f;
 
-    // resources path
-    constexpr const char* ASSETS_PATH   = "assets/";
-    constexpr const char* SHASDERS_PATH = "shaders/";
 }
