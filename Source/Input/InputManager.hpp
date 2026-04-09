@@ -3,6 +3,8 @@
 #include <SFML/Graphics.hpp>
 #include <unordered_map>	
 
+#include <iostream>
+
 class InputManager {
 public:
 
@@ -16,17 +18,22 @@ public:
 	bool IsKeyJustReleased(sf::Keyboard::Key key) const;
 
 	// mouse 
-	bool IsMouseDown       (sf::Mouse::Button btn) const;
-	bool IsMouseJustPressed(sf::Mouse::Button btn) const;
+	bool IsMouseDown        (sf::Mouse::Button btn) const;
+	bool IsMouseJustPressed (sf::Mouse::Button btn) const;
+	bool IsMouseJustReleased(sf::Mouse::Button key) const;
+
+
 	sf::Vector2i GetMousePosition() const;
-	sf::Vector2i GetMouseWorldPosition(const sf::View& view,
+	sf::Vector2f GetMouseWorldPosition(const sf::View& view,
 									   const sf::RenderWindow& window) const;
-	sf::Vector2i GetMouseDelta();
+	sf::Vector2f GetMouseDelta() const;
 private:
 	std::unordered_map<sf::Keyboard::Key, bool> m_keyCurrent;
 	std::unordered_map<sf::Keyboard::Key, bool> m_keyPrevious;
 
-	std::unordered_map<sf::Mouse::Button, bool> m_btnCurrent;
-	std::unordered_map<sf::Mouse::Button, bool> m_btnPrevious;
+	std::unordered_map<sf::Mouse::Button, bool> m_mouseCurrent;
+	std::unordered_map<sf::Mouse::Button, bool> m_mousePrevious;
 
+	sf::Vector2i m_mousePos;
+	sf::Vector2i m_mousePrevPos;
 };

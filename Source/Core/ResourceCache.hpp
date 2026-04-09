@@ -5,14 +5,16 @@
 #include <string>
 #include <stdexcept>
 
-template<typename T>
-bool loadResource(T& resource, const std::string& path) {
-    return resource.loadFromFile(path);
-}
+namespace LoadChoose {
+    template<typename T>
+    bool loadResource(T& resource, const std::string& path) {
+        return resource.loadFromFile(path);
+    }
 
-template<>
-inline bool loadResource<sf::Font>(sf::Font& font, const std::string& path) {
-    return font.openFromFile(path);
+    template<>
+    inline bool loadResource<sf::Font>(sf::Font& font, const std::string& path) {
+        return font.openFromFile(path);
+    }
 }
 
 template<typename Resource>
@@ -26,7 +28,7 @@ public:
             return *it->second;
 
         auto resource = std::make_unique<Resource>();
-        if (!loadResource(*resource, path))
+        if (!LoadChoose::loadResource(*resource, path))
             throw std::runtime_error("Failed to load: " + path);
 
         return *m_cache.emplace(id, std::move(resource)).first->second;

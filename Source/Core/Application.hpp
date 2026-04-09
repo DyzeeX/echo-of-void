@@ -12,7 +12,6 @@ class Application {
 public:
 	Application();
 	void Run();
-	~Application();
 
 	sf::RenderWindow& GetWindow();
 	ResourceManager& GetResources();
@@ -26,7 +25,7 @@ private:
 
 	sf::Clock  	     m_clock;
 	WindowManager    m_window;
-	StateManager     m_states;
 	ResourceManager  m_resources;
 	InputManager     m_input;
+	StateManager     m_states;
 };

@@ -13,25 +13,17 @@ Application::Application() {
 
 void Application::Run() {
 	
+
 	float accumulator = 0.f;
 	
 	while (m_window.Get().isOpen()) {
 
 		float frameTime = m_clock.restart().asSeconds();
-		// защита от "spiral of death" — если лагнуло, не догоняем бесконечно
 		if (frameTime > 0.25f) frameTime = 0.25f;
 		accumulator += frameTime;
 
 		ProcessEvents();
-
-		//while (accumulator >= Config::FIXED_DT) {
-		//	app_states.FixedUpdate(Config::FIXED_DT);
-		//	accumulator -= Config::FIXED_DT;
-		//}
-		//app_states.Update(frameTime);
-
 		Update(frameTime);
-
 		Render();
 	}
 }
@@ -39,19 +31,40 @@ void Application::Run() {
 void Application::ProcessEvents() {
 	while (const auto event = m_window.Get().pollEvent())
 	{
-		if (event->is<sf::Event::Closed>())
-			m_window.Get().close();
+		m_input.HandleEvent(*event);
 	}
 }
 
-void Application::Update(float deltaTime) { }
+void Application::Update(float deltaTime) {
+	m_input.Update();
+
+	if (m_input.IsKeyDown(sf::Keyboard::Key::Escape))
+	{
+		std::cout << "Escape was JUST PRESSED!\n";
+		m_window.Get().close();
+	}
+
+	if (m_input.IsKeyJustReleased(sf::Keyboard::Key::Space))
+	{
+		std::cout << "space was jsut RELEASED!\n";
+	}
+
+	if (m_input.IsKeyJustPressed(sf::Keyboard::Key::Space))
+	{
+		std::cout << "spsce just PRESSED\n";
+	}
+
+	if (m_input.IsKeyDown(sf::Keyboard::Key::Space))
+	{
+		std::cout << "space is DOWN!\n";
+	}
+
+}
 
 void Application::Render() {
 	m_window.Get().clear(sf::Color(10, 20, 10));
 	m_window.Get().display();
 }
-
-Application::~Application() { }
 
 // getters
 sf::RenderWindow& Application::GetWindow()   { return m_window.Get(); }
