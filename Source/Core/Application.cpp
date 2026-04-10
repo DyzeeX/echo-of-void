@@ -22,6 +22,7 @@ void Application::Run() {
 		if (frameTime > 0.25f) frameTime = 0.25f;
 		accumulator += frameTime;
 
+		m_input.Update();
 		ProcessEvents();
 		Update(frameTime);
 		Render();
@@ -36,7 +37,6 @@ void Application::ProcessEvents() {
 }
 
 void Application::Update(float deltaTime) {
-	m_input.Update();
 
 	if (m_input.IsKeyDown(sf::Keyboard::Key::Escape))
 	{
