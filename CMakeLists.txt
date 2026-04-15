@@ -24,7 +24,7 @@ add_executable (echo-of-void WIN32
 	"Source/Input/InputManager.cpp"
 	"Source/Particles/Particle.cpp"
 	"Source/States/StateManager.cpp"
-
+    "Source/States/MainMenuState.cpp"
 )
 
 target_include_directories(echo-of-void PRIVATE "Source")

@@ -5,6 +5,7 @@ void ResourceManager::Init() {
 	{
 		// load textures
 		textures.Load("icons", "Textures/set.png");
+		textures.Load("main-menu-background", "Textures/mmbc.png");
 
 		// load sounds
 		sounds.Load("bullet", "Sounds/gunshot.mp3");

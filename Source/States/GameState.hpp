@@ -11,8 +11,8 @@ public:
 	explicit GameState(Application& app) : m_app(app) {}
 	virtual ~GameState() = default;
 
-	virtual OnEnter() {}
-	virtual OnExit()  {}
+	virtual void OnEnter() {}
+	virtual void OnExit()  {}
 
 	virtual void HandleEvent(const sf::Event& event) = 0;
 	virtual void FixedUpdate(float dt) {}
@@ -22,5 +22,5 @@ public:
 	virtual bool IsOverlay() const { return false; }
 
 protected:
-	Application m_app;
+	Application& m_app;
 };

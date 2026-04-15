@@ -5,14 +5,6 @@ void InputManager::Update() {
 	m_mousePrevious = m_mouseCurrent;
 	m_mousePrevPos = m_mousePos;
 
-	//for (auto& [key, state] : m_keyCurrent) {
-	//	state = sf::Keyboard::isKeyPressed(key);
-	//}
-
-	//for (auto& [btn, state] : m_mouseCurrent) {
-	//	state = sf::Mouse::isButtonPressed(btn);
-	//}
-
 	m_mousePos = GetMousePosition();
 }
 
